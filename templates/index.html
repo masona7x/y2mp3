@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube to MP3 Converter</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #4facfe, #00f2fe); /* Cascading gradient */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+            text-align: center;
+        }
+        .container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        label {
+            font-size: 1rem;
+            color: #555;
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            color: #333;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        input[type="text"]:focus {
+            border-color: #3f8cf4;
+        }
+        button {
+            background-color: #3f8cf4;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #3578e5;
+        }
+        footer {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #777;
+        }
+        a {
+            color: #3f8cf4;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .introduction {
+            margin-top: 40px;
+            font-size: 1.1rem;
+            color: #fff;
+            font-weight: 400;
+            line-height: 1.6;
+            max-width: 700px;
+            text-align: center;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: rgba(0, 0, 0, 0.3); /* Slight transparent background */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s;
+        }
+        .introduction:hover {
+            background-color: rgba(0, 0, 0, 0.5); /* Darker background on hover */
+        }
+
+        .Header {
+            color: #3578e5;
+            font-size: 3.0rem;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        .logo {
+            max-width: 100%;  /* Ensures the image is responsive */
+            height: auto;     /* Keeps the aspect ratio intact */
+            max-height: 200px; /* Adjust this to your preferred size */
+        }
+
+        .status-bar {
+            width: 0%;  /* Initially hidden */
+            height: 10px;
+            background-color: #3f8cf4;
+            margin-top: 20px;
+            transition: width 3s ease-in-out;  /* Smooth animation */
+            display: none; /* Hidden initially */
+        }
+
+        .download-link {
+            display: none;
+            margin-top: 20px;
+            background-color: #3f8cf4;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .download-link:hover {
+            background-color: #3578e5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="Header">
+            <img src="{{ url_for('static', filename='Images/Y2MP3-removebg.png') }}" alt="Y2MP3 Logo" class="logo" />
+        </h1>
+        <h2 class="SubHeader">A Fast and Easy-to-Use Youtube Video to Mp3 File Converter</h2>
+        <form id="conversion-form" action="/download" method="post">
+            <input type="text" name="url" placeholder="Enter YouTube URL" required>
+            <button type="submit" id="convert-btn">Convert</button>
+        </form>        
+        <div id="status-bar" class="status-bar"></div>
+        <button id="download-btn" class="download-link" style="display:none;">Download MP3</button>
+        <footer>
+            <p>Y2MP3™</p>
+        </footer>
+    </div>
+
+    <p class="introduction">
+        Welcome to my YouTube MP3 Conversion Tool "Y2MP3"! This simple and easy-to-use tool allows you to convert your favorite YouTube videos into high-quality MP3 files. Just enter the video URL, hit "Convert," and you'll be able to download the audio in seconds!
+    </p>
+
+    <script>
+        const form = document.getElementById('conversion-form');
+        const statusBar = document.getElementById('status-bar');
+        const downloadButton = document.getElementById('download-btn');
+        const convertBtn = document.getElementById('convert-btn');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(form);
+
+            // Show the status bar immediately when the form is submitted
+            statusBar.style.display = 'block';
+            statusBar.style.width = '0%'; // Reset the width to 0%
+
+            // Show the convert button and status bar immediately
+            convertBtn.style.display = 'none';  // Hide the convert button when clicked
+
+            // Start the status bar animation
+            setTimeout(() => {
+                statusBar.style.width = '50%';  // Simulate a start of progress
+            }, 100);
+
+            // Start the conversion process
+            fetch('/download', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Update the status bar and show the download button
+                statusBar.style.width = '100%';  // Complete the progress bar animation
+                setTimeout(() => {
+                    statusBar.style.display = 'none';  // Hide the status bar after completion
+                    downloadButton.style.display = 'inline-block';
+                    downloadButton.onclick = function() {
+                        window.location.href = data.download_url;
+                    };
+                }, 500); // Delay a little bit for the animation to be visible
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was an error processing the request.');
+            });
+        });
+    </script>
+</body>
+</html>
