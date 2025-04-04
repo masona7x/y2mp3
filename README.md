@@ -21,6 +21,9 @@ Download the MP3 file once the conversion is complete.
 
 
 📦 Requirements
+
+OPTIONAL - There is a Dockerfile included in the root of the project folder if you would like to containerize this app
+
 Python 3.x must be installed on your system.
 
 You need the yt-dlp package to handle downloading and converting.
@@ -47,6 +50,7 @@ Install the required Python packages using pip.
 Run the python app.py command to start the Flask server.
 
 Open your web browser and go to http://127.0.0.1:5000 or http://localhost:5000
+
 
 
 
