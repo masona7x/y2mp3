@@ -1,0 +1,2 @@
+#Ignore html attribute to display correct language for repo
+*.html linguist-detectable=false
