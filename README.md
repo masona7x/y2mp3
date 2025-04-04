@@ -70,7 +70,5 @@ Contributions are welcome! If you'd like to contribute, please fork this reposit
 This project is licensed under the MIT License – see the LICENSE file for details.
 
 📝 Acknowledgements
-yt-dlp for video downloading and conversion.
-
-Flask for the web framework.
+yt-dlp for video downloading and conversion and Flask for the web framework.
 
