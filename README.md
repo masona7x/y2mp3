@@ -41,6 +41,7 @@ A simple and fast YouTube to MP3 converter app built with yt-dlp and Flask. Easi
  -yt-dlp==2025.3.27
 
 -To properly install all dependicies, use the requirements.txt file in the root of the project folder
+
 -Use command pip install -r requirements.txt  
 
 
