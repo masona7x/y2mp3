@@ -81,7 +81,7 @@ A simple and fast YouTube to MP3 converter app built with yt-dlp and Flask. Easi
 
 📄 License
 
--This project is licensed under the MIT License – see the LICENSE file for details.
+-TBD
 
 📝 Acknowledgements
 
