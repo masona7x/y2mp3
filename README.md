@@ -26,7 +26,7 @@ A simple and fast YouTube to MP3 converter app built with yt-dlp and Flask. Easi
 
 📦 Requirements
 
--OPTIONAL - There is a Dockerfile included in the root of the project folder if you would like to containerize this app
+-OPTIONAL - There is a Dockerfile included in the root of the project folder if you would like to containerize this app, see install instructions below
 
 -Python 3.x must be installed on your system.
 
@@ -42,7 +42,7 @@ A simple and fast YouTube to MP3 converter app built with yt-dlp and Flask. Easi
 
 -To properly install all dependicies, use the requirements.txt file in the root of the project folder
 
--Use command pip install -r requirements.txt  
+-Use command pip install -r requirements.txt while in the root of the project folder
 
 
 
@@ -59,6 +59,18 @@ A simple and fast YouTube to MP3 converter app built with yt-dlp and Flask. Easi
 
 -Open your web browser and go to http://127.0.0.1:5000 or http://localhost:5000
 
+
+DOCKER INSTALL STEPS
+
+-Make sure you have docker installed 
+
+-Navigate to the root of the project folder in your terminal
+
+-To build the image, run "docker build -t y2mp3 ."
+
+-Now that you have your y2mp3 image you can run the image in a container
+
+-To run the image, with port 5000 exposed, run command "docker run -d -p 5000:5000 --name y2mp3 y2mp3"
 
 
 
