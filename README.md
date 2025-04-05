@@ -1,102 +1,99 @@
-A simple and fast YouTube to MP3 converter app built with yt-dlp and Flask. Easily convert YouTube videos to high-quality MP3 files with one click
+# Y2MP3
+
+## Overview
+
+A simple and fast YouTube to MP3 converter app built with **yt-dlp** and **Flask**. Easily convert YouTube videos to high-quality MP3 files with one click.
+
+## 🚀 Features
+
+- Convert YouTube videos to MP3 format quickly.
+
+- High-quality audio output (up to 320kbps).
+
+- Built with yt-dlp (a powerful video downloader).
+
+- User-friendly interface 
 
 
 
-🚀 Features
+## ⚡ How It Works
 
--Convert YouTube videos to MP3 format quickly.
+- Paste the YouTube video URL into the app.
 
--High-quality audio output (up to 320kbps).
+- Click the convert button to start downloading.
 
--Built with yt-dlp (a powerful video downloader).
-
--User-friendly interface 
+- Download the MP3 file once the conversion is complete.
 
 
 
-⚡ How It Works
+## 📦 Requirements
 
--Paste the YouTube video URL into the app.
+> **OPTIONAL**
+> There is a Dockerfile included in the root of the project folder if you would like to containerize this app, see install instructions below
 
--Click the convert button to start downloading.
+- Python 3.x must be installed on your system.
 
--Download the MP3 file once the conversion is complete.
+- Required Dependencies:
+    - Flask==3.1.0
+    - pip==23.0.1
+    - pipreqs==0.5.0
+    - setuptools==65.5.0
+    - tinycss2==1.4.0
+    - youtube-dl==2021.12.17
+    - yt-dlp==2025.3.27
 
+- To properly install all dependencies, use the requirements.txt file in the root of the project folder by running the command `pip install -r requirements.txt` while in the root of the project folder
 
+## 🛠 Installation
 
-📦 Requirements
+1. Clone this repository from GitHub.
 
--OPTIONAL - There is a Dockerfile included in the root of the project folder if you would like to containerize this app, see install instructions below
+1. In your terminal, navigate to the project folder.
 
--Python 3.x must be installed on your system.
+1. Install the required Python packages using pip.
 
--Required Dependecies:
+1. Run the python app.py command to start the Flask server.
 
- -Flask==3.1.0
- -pip==23.0.1
- -pipreqs==0.5.0
- -setuptools==65.5.0
- -tinycss2==1.4.0
- -youtube-dl==2021.12.17
- -yt-dlp==2025.3.27
-
--To properly install all dependicies, use the requirements.txt file in the root of the project folder
-
--Use command pip install -r requirements.txt while in the root of the project folder
-
-
+1. Open your web browser and go to http://127.0.0.1:5000 or http://localhost:5000
 
 
-🛠 Installation
+### DOCKER INSTALL STEPS
 
--Clone this repository from GitHub.
+1. Make sure you have docker installed 
 
--In your terminal, navigate to the project folder.
+1. Navigate to the root of the project folder in your terminal
 
--Install the required Python packages using pip.
+1. To build the image, run `docker build -t y2mp3 .`
 
--Run the python app.py command to start the Flask server.
+1. Now that you have your y2mp3 image you can run the image in a container
 
--Open your web browser and go to http://127.0.0.1:5000 or http://localhost:5000
-
-
-DOCKER INSTALL STEPS
-
--Make sure you have docker installed 
-
--Navigate to the root of the project folder in your terminal
-
--To build the image, run "docker build -t y2mp3 ."
-
--Now that you have your y2mp3 image you can run the image in a container
-
--To run the image, with port 5000 exposed, run command "docker run -d -p 5000:5000 --name y2mp3 y2mp3"
+1. To run the image, with port 5000 exposed, run command `docker run -d -p 5000:5000 --name y2mp3 y2mp3`
 
 
 
-💻 Usage
+## 💻 Usage
 
--Launch the application.
+1. Launch the application.
 
--Open your web browser and go to http://127.0.0.1:5000 or http://localhost:5000
+1. Open your web browser and go to http://127.0.0.1:5000 or http://localhost:5000
 
--Paste any YouTube video URL into the input field.
+1. Paste any YouTube video URL into the input field.
 
--Click Convert to start the download.
+1. Click Convert to start the download.
 
--Once the conversion is complete, click Download to save the MP3.
+1. Once the conversion is complete, click Download to save the MP3.
 
 
 
-🧑‍💻 Contributing
+## 🧑‍💻 Contributing
 
--Contributions are welcome! If you'd like to contribute, please fork this repository and submit a pull request with your changes.
+Contributions are welcome! If you'd like to contribute, please fork this repository and submit a pull request with your changes.
 
-📄 License
+## 📄 License
 
--TBD
+TBD
 
-📝 Acknowledgements
+## 📝 Acknowledgements
 
--yt-dlp for video downloading and conversion and Flask for the web framework.
+**yt-dlp** for video downloading and conversion and **Flask** for the web framework.
 
