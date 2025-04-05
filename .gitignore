@@ -2,4 +2,4 @@
 venv/
 build/
 dist/
-app.spec/
+app.spec
