@@ -33,6 +33,8 @@ A simple and fast YouTube to MP3 converter app built with **yt-dlp** and **Flask
 
 - Python 3.x must be installed on your system.
 
+- ffmpeg must be installed on your system
+
 - Required Dependencies:
     - Flask==3.1.0
     - pip==23.0.1
