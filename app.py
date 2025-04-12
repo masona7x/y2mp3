@@ -1,6 +1,8 @@
 from flask import Flask, request, send_from_directory, url_for, render_template, after_this_request, jsonify
 import os
 import yt_dlp  # yt-dlp is used to fetch the youtube video files
+import threading
+import webview
 
 # Create a Flask web application instance
 app = Flask(__name__)
@@ -70,6 +72,19 @@ def serve_file(filename):
     
     return response
 
-# Start the Flask app on all available network interfaces (for dev/testing)
+
+#Starts the flask server on using localhost:5000
+def start_flask():
+    app.run(debug=False, host="127.0.0.1", port=5000)
+
+
+# Start the Flask app on all available network interfaces (for dev/testing)clear
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    #Start Flask server in a seperate thread
+    flask_thread = threading.Thread(target=start_flask)
+    flask_thread.daemon = True
+    flask_thread.start()
+
+    #Start the desktop window 
+    webview.create_window("Y2MP3", "http://127.0.0.1:5000")
+    webview.start()
