@@ -1,14 +1,11 @@
 from flask import Flask, request, send_from_directory, url_for, render_template, after_this_request, jsonify
 import os
 import yt_dlp  # yt-dlp is used to fetch the youtube video files
-from ensure_ffmpeg import ensure_ffmpeg
 
 # Create a Flask web application instance
 app = Flask(__name__)
 
 
-#Check for or install ffmpeg
-#ensure_ffmpeg()
 
 # Defines the folder where downloaded files will be stored
 DOWNLOAD_FOLDER = "downloads"
